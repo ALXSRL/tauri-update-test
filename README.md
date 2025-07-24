@@ -36,6 +36,6 @@ In `.github/workflows/release.yml`, I have set up the workflow to build the app 
 2. Don't forget to update the version everywhere in the app. (A script is recommended to automate this.)
 3. Merge to the `release` branch.
 4. Push the changes to the `release` branch.
-5. GitHub Actions will automatically build the app for all platforms and create a release with the built artifacts.
+5. GitHub Actions will automatically build the app for all platforms and create a release with the built artifacts. (check the Actions tab in your repository to monitor the build progress, and check if any errors occurred during the build.)
 
 Then you can test the update process by launching a previous version of the tauri app and checking if it updates to the latest version. (or just going in dev mode but setting an older version in the `tauri.conf.json` file).
