@@ -47,8 +47,26 @@ Required setup :
 
 On your release page you will find something like this:
 
-<!-- image -->
+![](images/2025-07-25-16-57-31.png)
 
-Make sure the latest.json file and the packaged app files are present in the release.
+Make sure the latest.json file and the packaged app files (at least the one you wanted to build) are present in the release.
+The `latest.json` file is crucial for the updater to work, as it contains the information about the latest version of the app.
+
+Here is an example of what the `latest.json` file should look like:
+
+```json
+{
+  "version": "0.1.0",
+  "notes": "See the assets to download this version and install.",
+  "pub_date": "2025-07-25T14:54:55.635Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "<signature_of_the_app>",
+      "url": "https://github.com/ALXSRL/tauri-update-test/releases/download/app-v0.1.0/tauri-update-test-app_0.1.0_x64_en-US.msi"
+    }
+  }
+}
+```
 
 Then you can test the update process by launching a previous version of the tauri app and checking if it updates to the latest version. (or just going in dev mode but setting an older version in the `tauri.conf.json` file).
+
