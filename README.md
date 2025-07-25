@@ -14,7 +14,7 @@ I've set up the `.env` file with the following variables:
 
 ```sh
 TAURI_SIGNING_PRIVATE_KEY_PASSWORD=<password_entered_when_creating_the_key>
-TAURI_SIGNING_PRIVATE_KEY=<absolute_path_to_your_private_key_file>
+TAURI_SIGNING_PRIVATE_KEY=<absolute_path_to_your_private_key_file|content_of_your_private_key>
 # Here I have set the key to be in the `src-tauri/.tauri` folder
 ```
 
@@ -32,10 +32,21 @@ In `.github/workflows/release.yml`, I have set up the workflow to build the app 
 
 ### Part 3: Creating a Release
 
+Required setup : 
+- Make sure you have Created "Action Secrets" in your GitHub repository with the following keys:
+  - `TAURI_SIGNING_PRIVATE_KEY` -> the content of your private key file
+  - `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` -> the password you used when creating the private key.
+
 1. Make your changes in the main / development branch.
 2. Don't forget to update the version everywhere in the app. (A script is recommended to automate this.)
 3. Merge to the `release` branch.
 4. Push the changes to the `release` branch.
 5. GitHub Actions will automatically build the app for all platforms and create a release with the built artifacts. (check the Actions tab in your repository to monitor the build progress, and check if any errors occurred during the build.)
+
+On your release page you will find something like this:
+
+<!-- image -->
+
+Make sure the latest.json file and the packaged app files are present in the release.
 
 Then you can test the update process by launching a previous version of the tauri app and checking if it updates to the latest version. (or just going in dev mode but setting an older version in the `tauri.conf.json` file).
