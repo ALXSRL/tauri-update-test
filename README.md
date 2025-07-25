@@ -18,6 +18,8 @@ TAURI_SIGNING_PRIVATE_KEY=<absolute_path_to_your_private_key_file|content_of_you
 # Here I have set the key to be in the `src-tauri/.tauri` folder
 ```
 
+Don't forget to put your `.env` and `.pem` files in your `.gitignore` file to avoid committing them to the repository.
+
 Now each time to run the `tauri build` command, the app will be signed with the private key in the active environment (.env file doesn't count).
 
 For this I have made the custom `load_keys.ps1` script that loads the keys from the `.env` file and sets them as environment variables.
